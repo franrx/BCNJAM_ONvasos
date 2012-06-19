@@ -1,0 +1,58 @@
+package com.mobisfera.onvasnevas;
+
+import java.io.InputStream;
+import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.WindowManager.LayoutParams;
+
+public class Onvasos extends Activity {
+	private static final int DIALOG = 0;
+	
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lose);
+        
+        startActivity(new Intent(this, Geolocalitzacio.class));
+        
+        InputStream inputStream = getResources().openRawResource(R.raw.test);
+        //List<PuntoVerde> puntos = parsePuntosVerdes(inputStream);
+        //showDialog(DIALOG);
+    }
+    
+    protected Dialog onCreateDialog(int id){
+		Dialog dialog = null;
+		switch(id){
+			case DIALOG:
+				AlertDialog.Builder builder3 = new AlertDialog.Builder(this);
+				builder3.setTitle("3").setCancelable(false);
+				dialog = builder3.create();
+				break;
+				}
+		dialog.getWindow().setFlags(LayoutParams.FLAG_FULLSCREEN, LayoutParams.FLAG_FULLSCREEN);
+		return dialog;
+    }
+    
+    private List<PuntoVerde> parsePuntosVerdes(InputStream input){
+    	SAXParserFactory factory = SAXParserFactory.newInstance();
+    	try{
+    		SAXParser parser = factory.newSAXParser();
+    		PuntoVerdeParser handler = new PuntoVerdeParser();
+    		parser.parse(input, handler);
+    		return handler.getPuntosVerdes();
+    	} catch (Exception e){
+    		Log.d("Error XML", "El XML ha parsear es incorrecto");
+    		Log.d("Error", e.getMessage());
+    	}
+    	return null;
+    }
+}

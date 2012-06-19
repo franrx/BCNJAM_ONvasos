@@ -1,0 +1,104 @@
+package com.mobisfera.onvasnevas;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
+
+import android.util.Log;
+
+public class PuntoVerdeParser extends DefaultHandler{
+	List<PuntoVerde> PuntosVerdes;
+    StringBuilder sb = null;
+    String ret = "";
+    PuntoVerde PuntoVerdeActual;
+    int howMany = 0;
+
+
+    PuntoVerdeParser() {
+    }
+
+    String getResults(){
+    	return "XML parsed data.\nThere are [" + howMany + "] status updates\n\n" + ret;
+    }
+    
+    public List<PuntoVerde> getPuntosVerdes(){
+    	return this.PuntosVerdes;
+    }
+    
+    // Inicializo la lista de resultados que vamos a devolver
+    // junto con el constructor de strings que usaremos para parsear los datos contenidos en el XML
+    @Override
+    public void startDocument() throws SAXException {
+    	super.startDocument();
+    	
+    	PuntosVerdes = new ArrayList<PuntoVerde>();
+    	sb = new StringBuilder();
+    }
+
+    @Override
+    public void endDocument() throws SAXException {
+
+    }
+
+    @Override
+    public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
+    	super.startElement(namespaceURI, localName, qName, atts);
+    	
+        if (localName.equals("VCard")) {
+        	PuntoVerdeActual = new PuntoVerde();
+        }
+    }
+
+    @Override
+    public void endElement(String namespaceURI, String localName, String qName) throws SAXException {
+    	if(localName.equals("identifier"))
+    		PuntoVerdeActual.setIdentifier(sb.toString());
+    	else if(localName.equals("fn"))
+    		PuntoVerdeActual.setDescription(sb.toString());
+    	else if(localName.equals("district"))
+    		PuntoVerdeActual.setDistrict(sb.toString());
+    	else if(localName.equals("neighborhood"))
+    		PuntoVerdeActual.setNeighborhood(sb.toString());
+    	else if(localName.equals("postal-code"))
+    		PuntoVerdeActual.setPostalCode(sb.toString());
+    	else if(localName.equals("locality"))
+    		PuntoVerdeActual.setLocality(sb.toString());
+    	else if(localName.equals("region"))
+    		PuntoVerdeActual.setRegion(sb.toString());
+    	else if(localName.equals("country-name"))
+    		PuntoVerdeActual.setCountry(sb.toString());
+    	else if(localName.equals("latitude"))
+    		PuntoVerdeActual.setLatitude(sb.toString());
+    	else if(localName.equals("longitude"))
+    		PuntoVerdeActual.setLongitude(sb.toString());
+    	else if(localName.equals("schedule"))
+    		PuntoVerdeActual.setSchedule(sb.toString());
+    	else if(localName.equals("label"))
+    		PuntoVerdeActual.setLabel(sb.toString());
+    	else if(localName.equals("value"))
+    		PuntoVerdeActual.setValue(sb.toString());
+    	else if (localName.equals("VCard")) {
+            PuntosVerdes.add(PuntoVerdeActual);
+        }
+    	
+    	sb.setLength(0);
+    	
+        if (localName.equals("VCard")) {
+        	howMany++;
+        	Log.d("Uno más", PuntoVerdeActual.getDescription());
+        }
+    }
+
+    @Override
+    public void characters(char ch[], int start, int length) throws SAXException{
+    	super.characters(ch, start, length);
+    	
+    	if(this.PuntoVerdeActual != null)
+    		sb.append(ch, start, length);
+    	
+    }
+
+}

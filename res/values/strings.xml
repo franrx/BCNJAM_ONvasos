@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, OnVasEnvasActivity!</string>
+    <string name="app_name">#ONvasos</string>
+    <string name="image">Descripción Imagen</string>
+    <string name="play">Jugar!</string>
+    <string name="help">Com jugar?</string>
+    <string name="guide">Guía de reciclatge</string>
+    <string name="score">Puntuacions</string>
+    <string name="geo">Geolocalització</string>
+    <string name="objective">PENDENT RECICLAR:</string>
+    <string name="time">TEMPS:</string>
+    <string name="objective_value">30</string>
+    <string name="time_value">60</string>
+    <string name="errors">LLISTAT D\'ERRORS</string>
+	<string name="facebook">COMPARTIR FACEBOOK</string>
+	<string name="lose">NIVELL NO \n SUPERAT!</string>
+	<string name="help_text">﻿
+1. Quin és l’objectiu del  joc?\n\n
+- Adquirir agilitat a l’hora de decidir quins residus van a cada contenidor (verd, groc, blau, marró, gris i punt verd), aconseguint que aquest moment de decisió s’incorpori en el  nostre dia a dia i millorem la qualitat del reciclatge en la nostra societat.\n\n
+- Informar del benefici que comporta reciclar i separar els residus. \n\n
+- Demostrar que reciclar pot ser divertit! \n\n
+
+2. Com funciona el joc?\n\n
+- Cada nivell té una sèrie de contenidors i elements que haurem de ‘reciclar’. Abans de que s’esgoti el temps, aconsegueix ‘reciclar’ el nombre d’elements indicats en cada nivell.\n\n
+- Cada cop que hagis exhaurit els elements corresponents al contenidor ‘actiu’, un altre contenidor s’activarà i podràs seguir reciclant.\n\n
+
+3. Com funcionen els nivells?\n\n
+- A cada nivell hi trobaràs nous contenidors i més elements a reciclar.\n\n
+- A mesura que vagin passant els nivells hauràs de reciclar més elements en el mateix temps!\n\n
+- Com més ràpid i àgil siguis més nivells podràs desbloquejar!\n\n
+
+4. Com funciona la puntuació?\n\n
+
+Punts per estrelles i temps restant:\n
+Pots obtenir punts conservant estrelles i reciclant molt ràpid. Els segons restants un cop reciclats tots els elements que exigeix el nivell, et donaran més punts!\n\n
+
+Conservació de les estrelles:\n
+Començaràs cada nivell amb tres estrelles i les podràs conservar sempre i quan no t’equivoquis de contenidor. Per cada dos errors, perdràs una de les estrelles.\n\n
+
+Com passar de nivell:\n
+Sempre que dins del temps establert aconsegueixis reciclar els elements indicat, hauràs superat el nivell i un altre nivell quedarà desbloquejat.\n\n
+Recorda que pots repetir qualsevol nivell ja assolit per intentar millorar la teva puntuació i el número d’estrelles aconseguit!\n\n
+
+5. Com es guanya?\n\n
+Amb el joc #ONvas tothom guanya: guanyes tu, guanya la teva família, guanya la teva ciutat, guanya la societat!\n\n
+
+Millora la teva pròpia puntuació en cadascun dels nivells. A més a més, cada dia podràs veure quin jugador ha aconseguit la màxima puntuació en cadascun dels nivells del joc. Volem veure el teu nom, sabem que ets un gran ‘recilcador’!\n\n
+
+Aprèn a reciclar còmodament allí on et trobis i en qualsevol moment! I a l’hora de reciclar de veritat, aprofita el nostre mapa on es mostren els punts verds per aprendre també on pots dirigir-te a dipositar els teus residus.</string>
+<string name="guide_text">
+    GUIA DEL RECICLATGE\n\n
+
+CONTENIDOR MARRÓ (materia orgànica)\n\n
+
+QUE PODEM LLENÇAR: restes de  carn, peix, pa, fruita, verdura, marisc, fruita seca, closques d’ou, taps de suro, bosses d’infusió, marro del cafè, paper de  cuina i tovallons bruts, restes d  jardineria, etc.\n\n
+
+NO PODEM LLENÇAR: restes d’escombrar, cabells, bolquers i excrements d’animals, que van al contenidor GRIS.\n\n  
+
+Paper i cartró, que van contenidor BLAU.\n\n
+
+CONTENIDOR GROC (plàstic, llaunes i brics)\n\n
+
+QUE PODEM LLENÇAR: envasos de plàstic (garrafes d’aigua, bosses de plàstic, envasos de iogurt, etc.), llaunes de begudes i conserves, brics, xapes i tapes de metall, paper d’alumini i film transparent, safates de porexpan...\n\n
+
+NO PODEM LLENÇAR: plàstics que no siguin envasos, com joguines, mànegues de regar, tubs, etc., materials com cintes de vídeo, CD i envasos de productes perillosos (com dissolventrs o pintures), que s’han de dur als PUNTS VERDS.\n\n
+
+
+CONTENIDOR VERD (envasos de vidre)\n\n
+
+QUE PODEM LLENÇAR: Envasos i ampolles de vidre.\n\n
+
+NO PODEM LLENÇAR: vasos trencats, vidres plans, miralls, restes de ceràmica, plats, bombetes, fluoerescents, etc., que s’han de dur als PUNTS VERDS.\n\n
+
+CONTENIDOR BLAU (envasos de vidre)\n\n
+
+QUE PODEM LLENÇAR: Envasos i caixes de cartró, diaris, revistes, llibretes sense l’espiral metàl·lica, sobres, bosses de paper, follis, paper de regal...\n\n
+
+NO PODEM LLENÇAR: Paper i material brut, com ara tovallons de paper o paper de cuina tacat d’oli, que van al contenidor MARRÓ.\n\n
+
+Els brics i paper d’alumini van al contenidor GROC.\n\n
+
+CONTENIDOR GRIS (rebuig)\n\n
+
+QUE PODEM LLENÇAR: burilles, compreses, bolquers, restes d’escombrar,\n\n
+
+NO PODEM LLENÇAR: plàstics que no siguin envasos, com joguines, mànegues de regar, tubs, etc., materials com cintes de vídeo, CD i envasosde productes perillosos (com dissolventrs o pintures), que s’han de dur als PUNTS VERDS.\n\n
+
+PUNTS VERDS\n\n
+
+Són instal·lacions que serveixen per dipositar certs  residus que no podem llençar als contenidors. N’hi ha diversos tipus:\n\n
+
+- Punts verds de zona: instal·lacions de grans dimensions ubicades a la perifèria de Barcelona.\n\n
+
+PODEM PORTAR-HI: vidre pla, electrodomèstics grans, restes de poda i jardineria, runa, trastos vells i mobles, etc.\n\n
+NO PODEM PORTAR-HI: residus industrials especials, tòxics i perillosos, ni residus sanitaris.\n\n
+
+- Punts verds de barri: dimensions reduïdes i situades en la trama urbana.\n\n
+- Punts verds mòbils, amb parades setmanals: són camions que aompleixen totes les funcions d’un Punt Verd, i s’ubiquen en diferents punts de la ciutat.\n\n
+- Punt verd mòbil escolar: és un punt verd exclusiu de les escoles perquè prenguin consciència mediambiental.\n\n
+
+PODEM PORTAR-HI: roba, calçat, cartutxos de tinta, tòners, aparells elèctrics i electrònics, olis de cuina, cables elèctrics, penumàtics petits, aerosols i esprais, bateries de cotxe, medicaments i cosmètics, radiografies, piles, olis de motor, pintures i vernissos, fluorescents  i bombetes, ampolles de cava, càpsules de cafè monodosi, etc.\n\n
+
+NO PODEM PORTAR-HI: residus orgànics, restes vegetals, runes, mobles i trastos, fustes, etc.\n\n
+</string>
+</resources>

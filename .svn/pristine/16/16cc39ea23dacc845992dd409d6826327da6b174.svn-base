@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/image"
+            android:padding="5dp"
+            android:src="@drawable/perfil" />
+
+        <ImageView
+            android:id="@+id/sound"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/image"
+            android:padding="5dp"
+            android:src="@drawable/volum_off" />
+        
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeLayout1"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_name"
+		android:textSize="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/tag"
+        android:orientation="vertical" >
+      
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+            
+		     <ImageView
+	            android:id="@+id/play"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/image"
+	            android:padding="5dp"
+	            android:src="@drawable/play" />
+     
+			<ImageView  
+				android:layout_width="fill_parent" 
+				android:layout_height="50dp"
+				android:layout_gravity="center_vertical"
+				android:src="@drawable/jugar_tag"
+				android:contentDescription="@string/image" />
+		         		    
+        </LinearLayout>
+        
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+	        
+		     <ImageView
+	            android:id="@+id/help"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/image"
+	            android:padding="5dp"
+	            android:src="@drawable/com_jugar" />
+		        
+			<ImageView  
+				android:layout_width="fill_parent" 
+				android:layout_height="50dp"
+				android:layout_gravity="center_vertical"
+				android:src="@drawable/com_jugar_tag"
+				android:contentDescription="@string/image" />
+		                 
+        </LinearLayout>
+				
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+	        
+		        <ImageView
+		            android:id="@+id/guide"
+		            android:layout_width="50dp"
+		            android:layout_height="50dp"
+		            android:layout_gravity="center_vertical"
+		            android:contentDescription="@string/image"
+		            android:padding="5dp"
+		            android:src="@drawable/guia" />
+			        
+				<ImageView  
+					android:layout_width="fill_parent" 
+					android:layout_height="50dp"
+					android:layout_gravity="center_vertical"
+					android:src="@drawable/guia_tag"
+					android:contentDescription="@string/image" />
+		         
+		    
+        </LinearLayout>
+        
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+		    
+		     <ImageView
+	            android:id="@+id/score"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/image"
+	            android:padding="5dp"
+	            android:src="@drawable/puntuacions" />
+		        
+			<ImageView  
+				android:layout_width="fill_parent" 
+				android:layout_height="50dp"
+				android:layout_gravity="center_vertical"
+				android:src="@drawable/puntuacions_tag"
+				android:contentDescription="@string/image" />
+			         
+        </LinearLayout>
+        
+		<LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" >
+		    
+		     <ImageView
+	            android:id="@+id/geo"
+	            android:layout_width="50dp"
+	            android:layout_height="50dp"
+	            android:layout_gravity="center_vertical"
+	            android:contentDescription="@string/image"
+	            android:padding="5dp"
+	            android:src="@drawable/geolocalitzacio" />
+		     
+			<ImageView  
+				android:layout_width="fill_parent" 
+				android:layout_height="50dp"
+				android:layout_gravity="center_vertical" 			    
+				android:src="@drawable/geolocalitzacion_tag"
+				android:contentDescription="@string/image" />
+			        
+        </LinearLayout>
+		
+    </LinearLayout>
+
+</RelativeLayout>

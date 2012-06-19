@@ -1,0 +1,222 @@
+package com.mobisfera.onvasnevas;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import android.graphics.Canvas;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.ItemizedOverlay;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapView;
+import com.google.android.maps.MyLocationOverlay;
+import com.google.android.maps.OverlayItem;
+
+public class Geolocalitzacio extends MapActivity {
+	  private MapView map=null;
+	  private MyLocationOverlay me=null;
+	  
+	  @Override
+	  public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.map);
+	    
+	    map=(MapView)findViewById(R.id.map);
+	    
+	    map.getController().setCenter(getPoint(41.4007241, 2.1972149000000627));
+	    map.getController().setZoom(17);
+	    map.setBuiltInZoomControls(true);
+	    
+	    Drawable marker=getResources().getDrawable(R.drawable.marker);
+	    
+	    marker.setBounds(0, 0, marker.getIntrinsicWidth(),marker.getIntrinsicHeight());
+	    
+	    map.getOverlays().add(new SitesOverlay(marker));
+	    
+	    me=new MyLocationOverlay(this, map);
+	    map.getOverlays().add(me);
+	  }
+	  
+	  @Override
+	  public void onResume() {
+	    super.onResume();
+	    
+	    me.enableCompass();
+	  }  
+	  
+	  @Override
+	  public void onPause() {
+	    super.onPause();
+	    
+	    me.disableCompass();
+	  }  
+	  
+	  @Override
+	  protected boolean isRouteDisplayed() {
+	    return(false);
+	  }
+	  
+	  @Override
+	  public boolean onKeyDown(int keyCode, KeyEvent event) {
+	    if (keyCode == KeyEvent.KEYCODE_S) {
+	      map.setSatellite(!map.isSatellite());
+	      return(true);
+	    }
+	    else if (keyCode == KeyEvent.KEYCODE_Z) {
+	      map.displayZoomControls(true);
+	      return(true);
+	    }
+	    
+	    return(super.onKeyDown(keyCode, event));
+	  }
+
+	  private GeoPoint getPoint(double lat, double lon) {
+	    return(new GeoPoint((int)(lat*1000000.0), (int)(lon*1000000.0)));
+	  }
+	    
+	  private class SitesOverlay extends ItemizedOverlay<OverlayItem> {
+	    private List<OverlayItem> items=new ArrayList<OverlayItem>();
+	    private Drawable marker=null;
+	    private OverlayItem inDrag=null;
+	    private ImageView dragImage=null;
+	    private int xDragImageOffset=0;
+	    private int yDragImageOffset=0;
+	    private int xDragTouchOffset=0;
+	    private int yDragTouchOffset=0;
+	    
+	    public SitesOverlay(Drawable marker) {
+	      super(marker);
+	      this.marker=marker;
+	      
+	      dragImage=(ImageView)findViewById(R.id.drag);
+	      xDragImageOffset=dragImage.getDrawable().getIntrinsicWidth()/2;
+	      yDragImageOffset=dragImage.getDrawable().getIntrinsicHeight();
+	      
+	      InputStream inputStream = getResources().openRawResource(R.raw.test);
+	      List<PuntoVerde> puntos = parsePuntosVerdes(inputStream);
+	      
+	      for(int i = 0; i < puntos.size(); i++) {
+	    	  if(puntos.get(i).getDescription().contains("Verd")) {
+	    		  Double latitude = Double.parseDouble(puntos.get(i).getLatitude());
+	    		  Double longitude = Double.parseDouble(puntos.get(i).getLongitude());
+	    		  items.add(new OverlayItem(getPoint(latitude, longitude), puntos.get(i).getDescription(), ""));
+	    	  }
+	      }
+
+	      populate();
+	    }
+	    
+	    private List<PuntoVerde> parsePuntosVerdes(InputStream input){
+	    	SAXParserFactory factory = SAXParserFactory.newInstance();
+	    	try{
+	    		SAXParser parser = factory.newSAXParser();
+	    		PuntoVerdeParser handler = new PuntoVerdeParser();
+	    		parser.parse(input, handler);
+	    		return handler.getPuntosVerdes();
+	    	} catch (Exception e){
+	    		Log.d("Error XML", "El XML ha parsear es incorrecto");
+	    		Log.d("Error", e.getMessage());
+	    	}
+	    	return null;
+	    }
+	    
+	    @Override
+	    protected OverlayItem createItem(int i) {
+	      return(items.get(i));
+	    }
+	    
+	    @Override
+	    public void draw(Canvas canvas, MapView mapView,
+	                      boolean shadow) {
+	      super.draw(canvas, mapView, shadow);
+	      
+	      boundCenterBottom(marker);
+	    }
+	    
+	    @Override
+	    public int size() {
+	      return(items.size());
+	    }
+	    
+	    @Override
+	    public boolean onTouchEvent(MotionEvent event, MapView mapView) {
+	      final int action=event.getAction();
+	      final int x=(int)event.getX();
+	      final int y=(int)event.getY();
+	      boolean result=false;
+	      
+	      if (action==MotionEvent.ACTION_DOWN) {
+	        for (OverlayItem item : items) {
+	          Point p=new Point(0,0);
+	          
+	          map.getProjection().toPixels(item.getPoint(), p);
+	          //GeoPoint p = mapView.getProjection().fromPixels((int) event.getX(),(int) event.getY());
+	          
+
+	          
+	          if (hitTest(item, marker, x-p.x, y-p.y)) {
+	        	  Toast.makeText(getBaseContext(), item.getTitle(), Toast.LENGTH_SHORT).show();
+	          }
+	            /*result=true;
+	            inDrag=item;
+	            items.remove(inDrag);
+	            populate();
+
+	            xDragTouchOffset=0;
+	            yDragTouchOffset=0;
+	            
+	            setDragImagePosition(p.x, p.y);
+	            dragImage.setVisibility(View.VISIBLE);
+
+	            xDragTouchOffset=x-p.x;
+	            yDragTouchOffset=y-p.y;*/
+	            
+	            //break;
+	          //}
+	        }
+	      }
+	      /*else if (action==MotionEvent.ACTION_MOVE && inDrag!=null) {
+	        setDragImagePosition(x, y);
+	        result=true;
+	      }
+	      else if (action==MotionEvent.ACTION_UP && inDrag!=null) {
+	        dragImage.setVisibility(View.GONE);
+	        
+	        GeoPoint pt=map.getProjection().fromPixels(x-xDragTouchOffset,
+	                                                   y-yDragTouchOffset);
+	        OverlayItem toDrop=new OverlayItem(pt, inDrag.getTitle(),
+	                                           inDrag.getSnippet());
+	        
+	        items.add(toDrop);
+	        populate();
+	        
+	        inDrag=null;
+	        result=true;
+	      }*/
+	      
+	      return(result || super.onTouchEvent(event, mapView));
+	    }
+	    
+	   /* private void setDragImagePosition(int x, int y) {
+	      RelativeLayout.LayoutParams lp=
+	        (RelativeLayout.LayoutParams)dragImage.getLayoutParams();
+	            
+	      lp.setMargins(x-xDragImageOffset-xDragTouchOffset,
+	                      y-yDragImageOffset-yDragTouchOffset, 0, 0);
+	      dragImage.setLayoutParams(lp);
+	    }*/
+	  }
+	}

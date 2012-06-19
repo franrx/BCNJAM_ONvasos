@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, OnVasEnvasActivity!</string>
+    <string name="app_name">#ONvasos</string>
+    <string name="image">Descripción Imagen</string>
+    <string name="play">Jugar!</string>
+    <string name="help">Com jugar?</string>
+    <string name="guide">Guía de reciclatge</string>
+    <string name="score">Puntuacions</string>
+    <string name="geo">Geolocalització</string>
+    <string name="objective">PENDENT RECICLAR:</string>
+    <string name="time">TEMPS:</string>
+
+</resources>

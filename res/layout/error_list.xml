@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/tag"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"
+        android:layout_alignParentTop="true"
+        android:text="@string/errors"        
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ListView
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/guide"
+        android:layout_below="@+id/tag"
+        android:background="@drawable/background"
+        android:cacheColorHint="#00000000"
+        android:divider="#FFFF00"
+        android:dividerHeight="1dp" >
+
+    </ListView>
+
+	<ImageView
+		android:id="@+id/guide"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:contentDescription="@string/image"
+		android:padding="5dp"
+		android:src="@drawable/guia" />
+
+	<ImageView
+		android:id="@+id/next"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:layout_alignParentBottom="true"
+		android:layout_toLeftOf="@+id/guide"
+		android:contentDescription="@string/image"
+		android:padding="5dp"
+		android:src="@drawable/next" />
+    
+</RelativeLayout>

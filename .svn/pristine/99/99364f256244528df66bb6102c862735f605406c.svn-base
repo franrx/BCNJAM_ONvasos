@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, OnVasEnvasActivity!</string>
+    <string name="app_name">#ONvasos</string>
+    <string name="image">Descripción Imagen</string>
+
+</resources>

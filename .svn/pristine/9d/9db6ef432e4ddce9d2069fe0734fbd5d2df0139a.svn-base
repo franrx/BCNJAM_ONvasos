@@ -1,0 +1,36 @@
+package com.mobisfera.onvasnevas;
+
+import java.io.InputStream;
+import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+
+public class Onvasos extends Activity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.game);
+        
+        InputStream inputStream = getResources().openRawResource(R.raw.test);
+        //List<PuntoVerde> puntos = parsePuntosVerdes(inputStream);
+    }
+    
+    private List<PuntoVerde> parsePuntosVerdes(InputStream input){
+    	SAXParserFactory factory = SAXParserFactory.newInstance();
+    	try{
+    		SAXParser parser = factory.newSAXParser();
+    		PuntoVerdeParser handler = new PuntoVerdeParser();
+    		parser.parse(input, handler);
+    		return handler.getPuntosVerdes();
+    	} catch (Exception e){
+    		Log.d("Error XML", "El XML ha parsear es incorrecto");
+    		Log.d("Error", e.getMessage());
+    	}
+    	return null;
+    }
+}

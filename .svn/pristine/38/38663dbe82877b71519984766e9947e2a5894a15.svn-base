@@ -1,0 +1,459 @@
+package com.mobisfera.onvasnevas;
+
+import java.util.Random;
+import java.util.Vector;
+
+public class Contenidor {
+	Marro mArro;
+	Verd vErd;
+	Blau bLau;
+	Gris gRis;
+	Groc gRoc;
+	PuntVerd puntVerd; 
+	
+	int nVerd;
+	int nGris;
+	int nGroc;
+	int nBlau;
+	int nMarro;
+	int nPuntVerd;
+	enum contenidors {VERD, GROC, BLAU, MARRO, GRIS, PUNTVERD};
+	public Contenidor(){
+		mArro = new Marro();
+		vErd = new Verd();
+		bLau = new Blau();
+		gRis = new Gris();
+		gRoc = new Groc();
+		puntVerd = new PuntVerd();
+		setBlau(0);
+		setGris(0);
+		setGroc(0);
+		setMarro(0);
+		setPuntVerd(0);
+		setVerd(0);
+		
+		
+	}
+	public int getMaxElem(int tag){
+		//verd
+		if (tag == 0){
+			return vErd.Imagenes.size();
+		}
+		//groc
+		else if (tag == 1){
+			return gRoc.Imagenes.size();
+		}
+		//blau
+		else if (tag == 2){
+			return bLau.Imagenes.size();
+		}
+		//Marro
+		else if (tag == 3){
+			return mArro.Imagenes.size();
+		}
+		//gris
+		else if (tag == 4){
+			return gRis.Imagenes.size();
+		}
+		//punt verd
+		else if (tag == 5){
+			return puntVerd.Imagenes.size();
+		}
+		return -1;
+	}
+	public String getElement(int cat, int id){
+		if (cat == 0){
+			return vErd.getVerd(id);
+		}
+		else if (cat == 1){
+			return gRoc.getGroc(id);
+		}
+		else if (cat == 2){
+			return bLau.getBlau(id);
+		}
+		else if (cat == 3){
+			return mArro.getMarro(id);
+		}
+		else if (cat == 4){
+			return gRis.getGris(id);
+		}
+		else if (cat == 5){
+			return puntVerd.getPuntVerd(id);
+			
+		}
+		return "";
+	}
+	
+	public void setMarro(int n){
+		nMarro = n;
+	}
+
+	public void setVerd(int n){
+		nVerd = n;
+	}
+
+	public void setBlau(int n){
+		nBlau = n;
+	}
+
+	public void setGroc(int n){
+		nGroc = n;
+	}
+
+	public void setGris(int n){
+		nGris = n;
+	}
+
+	public void setPuntVerd(int n){
+		nPuntVerd = n;
+	}
+
+	public int getMarro(){
+		return nMarro;
+	}
+
+	public int getVerd(){
+		return nVerd;
+	}
+
+	public int getBlau(){
+		return nBlau;
+	}
+
+	public int getGroc(){
+		return nGroc;
+	}
+
+	public int getGris(){
+		return nGris;
+	}
+
+	public int getPuntVerd(){
+		return nPuntVerd;
+	}
+	
+	public class Marro {
+		Vector<String> Imagenes;
+		
+		public Marro(){
+			initImagenes();
+		}
+
+		private void initImagenes() {
+			Imagenes = new Vector<String>();
+			Imagenes.add("Marro_1.png");
+			Imagenes.add("Marro_2.png");
+			Imagenes.add("Marro_3.png");
+			Imagenes.add("Marro_4.png");
+			Imagenes.add("Marro_5.png");
+			Imagenes.add("Marro_6.png");
+			Imagenes.add("Marro_7.png");
+			Imagenes.add("Marro_8.png");			
+		}
+		
+		public boolean esMarro(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (Imagenes.get(i).equals(name))
+					return true;
+			}
+			return false;
+		}
+		public String getRandom(){
+			Random rnd = new Random();
+			return Imagenes.get(rnd.nextInt(8));
+		}
+		public String getMarro(int index){
+			return Imagenes.get(index);
+		}
+		
+		public int getPos(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (name.equals(Imagenes.get(i)))
+					return i;
+			}
+			return -1;
+		}
+		
+		
+	}
+	public class Verd {
+		Vector<String> Imagenes;
+		
+		public Verd(){
+			initImagenes();
+		}
+
+		private void initImagenes() {
+			Imagenes = new Vector<String>();
+		//	Imagenes.add("Verd_1.png");
+			Imagenes.add("Verd_2.png");
+			Imagenes.add("Verd_3.png");
+			Imagenes.add("Verd_4.png");
+			Imagenes.add("Verd_5.png");
+			Imagenes.add("Verd_6.png");
+			Imagenes.add("Verd_7.png");
+			Imagenes.add("Verd_8.png");
+			Imagenes.add("Verd_9.png");
+			Imagenes.add("Verd_10.png");
+			Imagenes.add("Verd_11.png");
+			Imagenes.add("Verd_12.png");
+			Imagenes.add("Verd_13.png");
+			Imagenes.add("Verd_14.png");
+			Imagenes.add("Verd_15.png");			
+
+		}
+		
+		public boolean esVerd(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (Imagenes.get(i).equals(name))
+					return true;
+			}
+			return false;
+		}
+		public String getRandom(){
+			Random rnd = new Random();
+			return Imagenes.get(rnd.nextInt(8));
+		}
+		public String getVerd(int index){
+			return Imagenes.get(index);
+		}
+		
+		public int getPos(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (name.equals(Imagenes.get(i)))
+					return i;
+			}
+			return -1;
+		}
+		
+	}
+	
+	public class Blau {
+		Vector<String> Imagenes;
+		
+		public Blau(){
+			initImagenes();
+		}
+
+		private void initImagenes() {
+			Imagenes = new Vector<String>();
+			Imagenes.add("Blau_1.png");
+			Imagenes.add("Blau_2.png");
+			Imagenes.add("Blau_3.png");
+			Imagenes.add("Blau_4.png");
+			Imagenes.add("Blau_5.png");
+			Imagenes.add("Blau_6.png");
+			Imagenes.add("Blau_7.png");
+			Imagenes.add("Blau_8.png");
+			Imagenes.add("Blau_9.png");
+			Imagenes.add("Blau_10.png");
+			Imagenes.add("Blau_11.png");
+			Imagenes.add("Blau_12.png");
+			Imagenes.add("Blau_13.png");
+			Imagenes.add("Blau_14.png");
+			Imagenes.add("Blau_15.png");			
+			Imagenes.add("Blau_16.png");
+		}
+		
+		public boolean esBlau(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (Imagenes.get(i).equals(name))
+					return true;
+			}
+			return false;
+		}
+		public String getRandom(){
+			Random rnd = new Random();
+			return Imagenes.get(rnd.nextInt(8));
+		}
+		public String getBlau(int index){
+			return Imagenes.get(index);
+		}
+		
+		public int getPos(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (name.equals(Imagenes.get(i)))
+					return i;
+			}
+			return -1;
+		}
+		
+	}
+	
+	public class Gris {
+		Vector<String> Imagenes;
+		
+		public Gris(){
+			initImagenes();
+		}
+
+		private void initImagenes() {
+			Imagenes = new Vector<String>();
+			Imagenes.add("Gris_1.png");
+			Imagenes.add("Gris_2.png");
+			Imagenes.add("Gris_3.png");
+			Imagenes.add("Gris_4.png");
+			Imagenes.add("Gris_5.png");
+	/*		Imagenes.add("Gris_6.png");
+			Imagenes.add("Gris_7.png");
+			Imagenes.add("Gris_8.png");
+			Imagenes.add("Gris_9.png");
+			Imagenes.add("Gris_10.png");
+			Imagenes.add("Gris_11.png");
+			Imagenes.add("Gris_12.png");
+			Imagenes.add("Gris_13.png");
+			Imagenes.add("Gris_14.png");
+			Imagenes.add("Gris_15.png");			
+			Imagenes.add("Gris_16.png");*/
+		}
+		
+		public boolean esGris(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (Imagenes.get(i).equals(name))
+					return true;
+			}
+			return false;
+		}
+		public String getRandom(){
+			Random rnd = new Random();
+			return Imagenes.get(rnd.nextInt(8));
+		}
+		public String getGris(int index){
+			return Imagenes.get(index);
+		}
+		
+		public int getPos(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (name.equals(Imagenes.get(i)))
+					return i;
+			}
+			return -1;
+		}
+		
+	}
+	
+
+	public class Groc {
+		Vector<String> Imagenes;
+		
+		public Groc(){
+			initImagenes();
+		}
+
+		private void initImagenes() {
+			Imagenes = new Vector<String>();
+			Imagenes.add("Groc_1.png");
+			Imagenes.add("Groc_2.png");
+			Imagenes.add("Groc_3.png");
+			Imagenes.add("Groc_4.png");
+			Imagenes.add("Groc_5.png");
+			Imagenes.add("Groc_6.png");
+			Imagenes.add("Groc_7.png");
+			Imagenes.add("Groc_8.png");
+			Imagenes.add("Groc_9.png");
+			Imagenes.add("Groc_10.png");
+			Imagenes.add("Groc_11.png");
+			Imagenes.add("Groc_12.png");
+			Imagenes.add("Groc_13.png");
+			Imagenes.add("Groc_14.png");
+			Imagenes.add("Groc_15.png");			
+			Imagenes.add("Groc_16.png");
+			Imagenes.add("Groc_17.png");
+			Imagenes.add("Groc_18.png");
+			Imagenes.add("Groc_19.png");
+			Imagenes.add("Groc_20.png");
+			Imagenes.add("Groc_21.png");
+			Imagenes.add("Groc_22.png");
+			Imagenes.add("Groc_23.png");
+			Imagenes.add("Groc_24.png");			
+			Imagenes.add("Groc_25.png");
+		}
+		
+		public boolean esGroc(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (Imagenes.get(i).equals(name))
+					return true;
+			}
+			return false;
+		}
+		public String getRandom(){
+			Random rnd = new Random();
+			return Imagenes.get(rnd.nextInt(8));
+		}
+		public String getGroc(int index){
+			return Imagenes.get(index);
+		}
+		
+		public int getPos(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (name.equals(Imagenes.get(i)))
+					return i;
+			}
+			return -1;
+		}
+		
+	}
+	
+	public class PuntVerd {
+		Vector<String> Imagenes;
+		
+		public PuntVerd(){
+			initImagenes();
+		}
+
+		private void initImagenes() {
+			Imagenes = new Vector<String>();
+			Imagenes.add("puntVerd_1.png");
+			Imagenes.add("puntVerd_2.png");
+			Imagenes.add("puntVerd_3.png");
+			Imagenes.add("puntVerd_4.png");
+			Imagenes.add("puntVerd_5.png");
+			Imagenes.add("puntVerd_6.png");
+			Imagenes.add("puntVerd_7.png");
+			Imagenes.add("puntVerd_8.png");
+			Imagenes.add("puntVerd_9.png");
+			Imagenes.add("puntVerd_10.png");
+			Imagenes.add("puntVerd_11.png");
+			/*Imagenes.add("puntVerd_12.png");
+			Imagenes.add("puntVerd_13.png");
+			Imagenes.add("puntVerd_14.png");
+			Imagenes.add("puntVerd_15.png");			
+			Imagenes.add("puntVerd_16.png");
+			Imagenes.add("puntVerd_17.png");
+			Imagenes.add("puntVerd_18.png");
+			Imagenes.add("puntVerd_19.png");
+			Imagenes.add("puntVerd_20.png");
+			Imagenes.add("puntVerd_21.png");
+			Imagenes.add("puntVerd_22.png");
+			Imagenes.add("puntVerd_23.png");
+			Imagenes.add("puntVerd_24.png");			
+			Imagenes.add("puntVerd_25.png");*/
+		}
+		
+		public boolean esPuntVerd(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (Imagenes.get(i).equals(name))
+					return true;
+			}
+			return false;
+		}
+		public String getRandom(){
+			Random rnd = new Random();
+			return Imagenes.get(rnd.nextInt(8));
+		}
+		public String getPuntVerd(int index){
+			return Imagenes.get(index);
+		}
+		
+		public int getPos(String name){
+			for (int i = 0; i < Imagenes.size(); i++){
+				if (name.equals(Imagenes.get(i)))
+					return i;
+			}
+			return -1;
+		}
+		
+	}
+	
+	
+}
